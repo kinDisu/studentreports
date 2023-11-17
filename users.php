@@ -27,14 +27,23 @@
 </form>
 
 <?php
+// Include the 'connection.php' file, which presumably contains the database connection logic
 include_once('connection.php');
+
+// Prepare a SQL statement to select all columns from the 'TblUsers' table
 $stmt = $conn->prepare("SELECT * FROM TblUsers");
+
+// Execute the prepared statement
 $stmt->execute();
+
+// Fetch each row from the result set using associative array indexing
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 {
+  // Output the values of the 'Forename', 'Surname', and 'House' columns for each row
   echo($row["Forename"].' '.$row["Surname"]."<br>".$row["House"]."<br>");
 }
 
 ?>
+
 </body>
 </html>
